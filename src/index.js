@@ -10,7 +10,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 
 
-const element = <p className="App-intro">Hello, world</p>;
+const element = <p className="App-intro">Hello, world "body1"</p>;
 ReactDOM.render(element,document.getElementById('body1'));
 
 
@@ -18,7 +18,7 @@ ReactDOM.render(element,document.getElementById('body1'));
 function tick() {
     const element = (
         <div>
-            <h1>Hello, world!</h1>
+            <h1>Hello, world with function component 'body2'!</h1>
             <h2>It is {new Date().toLocaleTimeString()}.</h2>
         </div>
     );
@@ -33,7 +33,7 @@ setInterval(tick, 1000);
 
 
 function Welcome(props) {
-    return <h1>Hello, {props.name} {props.field}</h1>;
+    return <h1>Hello sara with fiels="test" ..and body3., {props.name} {props.field}</h1>;
 }
 const elmnt = <Welcome name="Sara" field="Test" />;
 
@@ -44,6 +44,9 @@ ReactDOM.render(
 
 
 
+
+
+
 function formatDate(date) {
     return date.toLocaleDateString();
 }
@@ -51,6 +54,10 @@ function formatDate(date) {
 
 
 function Comment(props) {
+
+
+    console.log("props: ");
+    console.log(props);
     return (
         <div className="Comment">
             <div className="UserInfo">
@@ -63,7 +70,7 @@ function Comment(props) {
                     {props.author.name}
                 </div>
             </div>
-            <div className="Comment-text">{props.text}</div>
+            <div className="Comment-text">{props.text} .. and <b>body4</b></div>
             <div className="Comment-date">
                 {formatDate(props.date)}
             </div>
@@ -74,7 +81,7 @@ function Comment(props) {
 
 const comment = {
     date: new Date(),
-    text: 'I hope you enjoy learning React!',
+    text: 'I hope you enjoy learning React! ...and ',
     author: {
         name: 'Hello Kitty',
         avatarUrl: 'http://placekitten.com/g/64/64',
@@ -102,7 +109,7 @@ function Clock(props) {
     return (
         <div>
             <h1>Hello, world!</h1>
-            <h2>It is {props.date.toLocaleTimeString()}.</h2>
+            <h2>It is {props.date.toLocaleTimeString()} with body5.</h2>
         </div>
     );
 }
@@ -116,11 +123,15 @@ function tick2() {
 
 setInterval(tick2, 1000);
 
-
+// at state and lifecycle ==> https://reactjs.org/docs/state-and-lifecycle.html
+// at state and lifecycle ==> https://reactjs.org/docs/state-and-lifecycle.html
 
 class Clock2 extends React.Component {
     constructor(props) {
+
+        // Class components should always call the base constructor with props
         super(props);
+        //sent to base.
         this.state = {date: new Date()};
     }
 
@@ -149,7 +160,7 @@ class Clock2 extends React.Component {
         return (
             <div>
                 <h1>Hello, world! from Clock2 Class Module</h1>
-                <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+                <h2>It is {this.state.date.toLocaleTimeString()} ... with body6</h2>
             </div>
         );
     }
@@ -165,7 +176,7 @@ ReactDOM.render(
 
 
 
- // state  last code >> https://reactjs.org/docs/state-and-lifecycle.html 
+ // state  last code >> https://reactjs.org/docs/state-and-lifecycle.html
 function FormattedDate(props) {
     return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
 }
@@ -214,4 +225,7 @@ function App2() {
 }
 
 ReactDOM.render(<App2 />, document.getElementById('body7'));
+
+
+
 
