@@ -123,6 +123,8 @@ function tick2() {
 
 setInterval(tick2, 1000);
 
+// Adding Local State to a Class
+
 // at state and lifecycle ==> https://reactjs.org/docs/state-and-lifecycle.html
 // at state and lifecycle ==> https://reactjs.org/docs/state-and-lifecycle.html
 
@@ -133,7 +135,18 @@ class Clock2 extends React.Component {
         super(props);
         //sent to base.
         this.state = {date: new Date()};
+
+
+        console.log("this.timerID for the first time: ");
+        console.log(this.timerID);
     }
+
+
+    // Adding Lifecycle Methods to a Class
+    // These methods are called “lifecycle hooks”.
+
+    // The componentDidMount() hook runs after the component output has been
+    // rendered to the DOM. This is a good place to set up a timer:
 
     componentDidMount() {
         this.timerID = setInterval(
