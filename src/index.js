@@ -137,8 +137,19 @@ class Clock2 extends React.Component {
         this.state = {date: new Date()};
 
 
+
+        console.log("props: ");
+        console.log(props);
+
+
+        console.log("this.state: ");
+        console.log(this.state);
+
+
         console.log("this.timerID for the first time: ");
         console.log(this.timerID);
+        // undefined in the very first time.
+        // everything in this constructor will be called only once at first time
     }
 
 
@@ -157,6 +168,7 @@ class Clock2 extends React.Component {
 
         console.log("this.timerID: ");
         console.log(this.timerID);
+
     }
 
     componentWillUnmount() {
@@ -172,7 +184,7 @@ class Clock2 extends React.Component {
     render() {
         return (
             <div>
-                <h1>Hello, world! from Clock2 Class Module</h1>
+                <h1>Hello, world! from Clock2 Class Module ... with body6</h1>
                 <h2>It is {this.state.date.toLocaleTimeString()} ... with body6</h2>
             </div>
         );
@@ -189,7 +201,9 @@ ReactDOM.render(
 
 
 
- // state  last code >> https://reactjs.org/docs/state-and-lifecycle.html
+// state  last code >> https://reactjs.org/docs/state-and-lifecycle.html
+
+
 function FormattedDate(props) {
     return <h2>It is {props.date.toLocaleTimeString()}.</h2>;
 }
@@ -238,6 +252,85 @@ function App2() {
 }
 
 ReactDOM.render(<App2 />, document.getElementById('body7'));
+
+
+
+// function ActionLink() {
+//     function handleClick(e) {
+//         e.preventDefault();
+//         console.log('The link was clicked.');
+//     }
+//
+//     return (
+//         <a href="#" onClick={handleClick}>
+//             Click me
+//         </a>
+//     );
+// }
+
+
+class Toggle extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+
+        // This binding is necessary to make `this` work in the callback
+        // this.handleClick = this.handleClick.bind(this);
+
+        this.handleClick = this.handleClick.bind(this);
+
+        console.log("number 01 ");
+    }
+
+    handleClick() {
+        console.log("number 03 ");
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+
+
+
+    //     In JavaScript, class methods are not bound by default. If you forget to bind this.handleClick
+    //     and pass it to onClick, this will be undefined when the function is actually called.
+    //
+    //  This is not React-specific behavior; it is a part of how functions work in JavaScript.
+    //     Generally, if you refer to a method without () after it, such as onClick={this.handleClick},
+    // you should bind that method.
+
+    render() {
+
+        console.log("number 02 ");
+        {/*<button onClick={this.handleClick()}>*/}
+        return (
+
+        <button onClick={this.handleClick}>
+                {this.state.isToggleOn ? 'ON' : 'OFF'}
+            </button>
+        );
+    }
+
+}
+
+ReactDOM.render(
+    <Toggle />,
+    document.getElementById('bodyToggle')
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
