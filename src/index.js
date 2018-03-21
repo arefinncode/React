@@ -62,6 +62,14 @@ function LoginButton(props) {
             Login
         </button>
     );
+
+    // return (
+    //     <button>
+    //         Login
+    //     </button>
+    // );
+
+
 }
 
 function LogoutButton(props) {
@@ -85,15 +93,23 @@ class LoginControl extends React.Component {
     }
 
     handleLoginClick() {
+
+        console.log("At handleLoginClick()");
         this.setState({isLoggedIn: true});
     }
 
     handleLogoutClick() {
+
+        console.log("At handleLogoutClick()");
         this.setState({isLoggedIn: false});
     }
 
     render() {
         const isLoggedIn = this.state.isLoggedIn;
+
+
+        console.log("isLoggedIn: ");
+        console.log(isLoggedIn);
 
         const button = isLoggedIn ? (
             <LogoutButton onClick={this.handleLogoutClick} />
@@ -116,3 +132,25 @@ ReactDOM.render(
 );
 
 
+// inline methods ==>
+
+
+function Mailbox(props) {
+    const unreadMessages = props.unreadMessages;
+    return (
+        <div>
+            <h1>Hello!</h1>
+            {unreadMessages.length > 0 &&
+            <h2>
+                You have {unreadMessages.length} unread messages.
+            </h2>
+            }
+        </div>
+    );
+}
+
+const messages = ['React', 'Re: React', 'Re:Re: React'];
+ReactDOM.render(
+    <Mailbox unreadMessages={messages} />,
+    document.getElementById('body4')
+);
